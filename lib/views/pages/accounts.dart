@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rr_qasim_assign/localizations/Translator.dart';
+import 'package:rr_qasim_assign/views/widgets/account_list_item.dart';
 
 class AccountsPage extends StatelessWidget {
   const AccountsPage({Key? key}) : super(key: key);
@@ -47,7 +48,15 @@ class AccountsPage extends StatelessWidget {
             TextButton.icon(
                 onPressed: () => {}, icon: const Icon(Icons.filter_alt), label: Text(Translator().getText('filter')))
           ],
-        )
+        ),
+        Expanded(
+            child: ListView.separated(
+                itemCount: 10,
+                padding: const EdgeInsets.only(top: 10),
+                separatorBuilder: (context, index) => const SizedBox(height: 10),
+                itemBuilder: (context, index) {
+                  return const AccountListItem();
+                }))
       ]),
     );
   }
