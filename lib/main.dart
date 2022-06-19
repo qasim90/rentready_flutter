@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:rr_qasim_assign/localizations/Messages.dart';
 import 'package:rr_qasim_assign/views/pages/accounts.dart';
 
 void main() {
@@ -10,12 +12,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       // title: 'Flutter Demo',
+      translations: Messages(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const AccountsPage(),
+      locale: const Locale('en', 'US'), // Current locale of the app
+      supportedLocales: const [Locale('en', 'US')], // All locales supported by the app
+      debugShowCheckedModeBanner: false,
     );
   }
 }
