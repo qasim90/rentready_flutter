@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AccountsPage(),
+      home: AccountsPage(),
       locale: const Locale('en', 'US'), // Current locale of the app
       supportedLocales: const [Locale('en', 'US')], // All locales supported by the app
       debugShowCheckedModeBanner: false,

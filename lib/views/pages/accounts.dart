@@ -1,35 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rr_qasim_assign/controllers/accounts_controller.dart';
 import 'package:rr_qasim_assign/localizations/Translator.dart';
 import 'package:rr_qasim_assign/views/widgets/account_grid_item.dart';
+import 'package:rr_qasim_assign/views/widgets/account_list_item.dart';
+import 'package:rr_qasim_assign/views/widgets/layout_switcher.dart';
 
 class AccountsPage extends StatelessWidget {
-  const AccountsPage({Key? key}) : super(key: key);
+  AccountsPage({Key? key}) : super(key: key);
+
+  // GetX controller to hold the state and logic for this view
+  final controller = Get.put(AccountsController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(Translator().getText('accounts')), actions: [
-        Container(
-          // alignment: Alignment.centerRight,
-          margin: const EdgeInsets.symmetric(vertical: 7),
-          padding: const EdgeInsets.only(right: 10),
-          // height: 10,
-          child: ToggleButtons(
-            fillColor: Colors.amber,
-            // borderColor: Colors.white,
-            // selectedBorderColor: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            selectedColor: Colors.white,
-            color: Colors.grey.shade600,
-            children: const <Widget>[
-              Icon(Icons.format_list_bulleted),
-              Icon(Icons.grid_view),
-            ],
-            isSelected: const [true, false],
-            onPressed: onLayoutToggle,
-          ),
-        )
-      ]),
+      appBar: AppBar(title: Text(Translator().getText('accounts')), actions: [LayoutSwitcher()]),
       body: Column(children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,23 +36,21 @@ class AccountsPage extends StatelessWidget {
           ],
         ),
         Expanded(
-          child: GridView.count(
-              crossAxisCount: 3,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 0.9,
-              children: List<int>.generate(10, (index) => index).map((e) => const AccountGridItem()).toList()),
-          /*child: ListView.separated(
-                itemCount: 10,
-                padding: const EdgeInsets.only(top: 10),
-                separatorBuilder: (context, index) => const SizedBox(height: 10),
-                itemBuilder: (context, index) {
-                  return const AccountListItem();
-                })*/
-        )
+            child: Obx(() => controller.isListView
+                ? ListView.separated(
+                    itemCount: 10,
+                    padding: const EdgeInsets.only(top: 10),
+                    separatorBuilder: (context, index) => const SizedBox(height: 10),
+                    itemBuilder: (context, index) {
+                      return const AccountListItem();
+                    })
+                : GridView.count(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 0.9,
+                    children: List<int>.generate(10, (index) => index).map((e) => const AccountGridItem()).toList())))
       ]),
     );
   }
-
-  onLayoutToggle(int index) {}
 }
