@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rr_qasim_assign/localizations/Translator.dart';
-import 'package:rr_qasim_assign/views/widgets/account_list_item.dart';
+import 'package:rr_qasim_assign/views/widgets/account_grid_item.dart';
 
 class AccountsPage extends StatelessWidget {
   const AccountsPage({Key? key}) : super(key: key);
@@ -50,13 +50,20 @@ class AccountsPage extends StatelessWidget {
           ],
         ),
         Expanded(
-            child: ListView.separated(
+          child: GridView.count(
+              crossAxisCount: 3,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              childAspectRatio: 0.9,
+              children: List<int>.generate(10, (index) => index).map((e) => const AccountGridItem()).toList()),
+          /*child: ListView.separated(
                 itemCount: 10,
                 padding: const EdgeInsets.only(top: 10),
                 separatorBuilder: (context, index) => const SizedBox(height: 10),
                 itemBuilder: (context, index) {
                   return const AccountListItem();
-                }))
+                })*/
+        )
       ]),
     );
   }
