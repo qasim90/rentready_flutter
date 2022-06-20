@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:rr_qasim_assign/localizations/Messages.dart';
-import 'package:rr_qasim_assign/views/pages/accounts.dart';
+import 'package:rr_qasim_assign/navigation/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AccountsPage(),
+      routes: routes,
+      initialRoute: '/',
+      // home: AccountsPage(),
       locale: const Locale('en', 'US'), // Current locale of the app
       supportedLocales: const [Locale('en', 'US')], // All locales supported by the app
       debugShowCheckedModeBanner: false,
