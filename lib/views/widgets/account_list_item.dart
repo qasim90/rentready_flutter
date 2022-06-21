@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rr_qasim_assign/models/account.dart';
 
 class AccountListItem extends StatelessWidget {
-  const AccountListItem({Key? key}) : super(key: key);
+  AccountListItem(this.account, {Key? key}) : super(key: key);
+  Account account;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,12 @@ class AccountListItem extends StatelessWidget {
               spacing: 5,
               direction: Axis.vertical,
               crossAxisAlignment: WrapCrossAlignment.start,
-              children: const [
-                Text('Fourth Coffee (sample)', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('5009 Orange Street Renton, TX 20175 U.S.'),
-                Text('http://www.fourthcoffee.com/', style: TextStyle(color: Colors.blue)),
-                Text('someone1@example.com', style: TextStyle(color: Colors.blue)),
-                Text('555-0150')
+              children: [
+                Text(account.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(account.address),
+                Text(account.website, style: const TextStyle(color: Colors.blue)),
+                Text(account.email, style: const TextStyle(color: Colors.blue)),
+                Text(account.phone)
               ],
             )
           ],

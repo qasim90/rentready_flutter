@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rr_qasim_assign/models/account.dart';
 
 class AccountGridItem extends StatelessWidget {
-  const AccountGridItem({Key? key}) : super(key: key);
+  AccountGridItem(this.account, {Key? key}) : super(key: key);
+  Account account;
 
   @override
   build(BuildContext context) {
@@ -16,11 +18,11 @@ class AccountGridItem extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Container(width: 100, height: 100, color: Colors.grey),
-              const Text('Fourth Coffee (sample)', style: TextStyle(fontWeight: FontWeight.bold)),
-              const Text('5009 Orange Street Renton, TX 20175 U.S.'),
-              const Text('http://www.fourthcoffee.com/', style: TextStyle(color: Colors.blue)),
-              const Text('someone1@example.com', style: TextStyle(color: Colors.blue)),
-              const Text('555-0150')
+              Text(account.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text(account.address),
+              Text(account.website, style: const TextStyle(color: Colors.blue)),
+              Text(account.email, style: const TextStyle(color: Colors.blue)),
+              Text(account.phone)
             ]),
       ),
     );

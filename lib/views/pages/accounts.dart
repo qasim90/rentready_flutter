@@ -36,20 +36,22 @@ class AccountsPage extends StatelessWidget {
           ],
         ),
         Expanded(
-            child: Obx(() => controller.isListView
-                ? ListView.separated(
-                    itemCount: 10,
-                    padding: const EdgeInsets.only(top: 10),
-                    separatorBuilder: (context, index) => const SizedBox(height: 10),
-                    itemBuilder: (context, index) {
-                      return const AccountListItem();
-                    })
-                : GridView.count(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 0.9,
-                    children: List<int>.generate(10, (index) => index).map((e) => const AccountGridItem()).toList())))
+            child: Obx(() => controller.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : controller.isListView
+                    ? ListView.separated(
+                        itemCount: controller.accounts.length,
+                        padding: const EdgeInsets.only(top: 10),
+                        separatorBuilder: (context, index) => const SizedBox(height: 10),
+                        itemBuilder: (context, index) {
+                          return AccountListItem(controller.accounts[index]);
+                        })
+                    : GridView.count(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.9,
+                        children: controller.accounts.map((acct) => AccountGridItem(acct)).toList())))
       ]),
     );
   }
