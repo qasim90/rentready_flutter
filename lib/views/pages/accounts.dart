@@ -22,7 +22,7 @@ class AccountsPage extends StatelessWidget {
           children: [
             Expanded(
               child: TextField(
-                  onChanged: (value) => {},
+                  onSubmitted: controller.fetchAccounts,
                   textCapitalization: TextCapitalization.words,
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(

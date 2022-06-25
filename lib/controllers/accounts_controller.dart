@@ -22,10 +22,10 @@ class AccountsController extends GetxController {
     _listGridStatus.value = (activeIndex == 0) ? [true, false] : [false, true];
   }
 
-  fetchAccounts() async {
+  fetchAccounts([String query = '']) async {
     _isLoading.value = true;
     try {
-      final _accounts = await ApiProvider().getAccounts();
+      final _accounts = await ApiProvider().getAccounts(query);
       accounts.assignAll(_accounts);
       _isLoading.value = false;
     } on Exception catch (e) {
