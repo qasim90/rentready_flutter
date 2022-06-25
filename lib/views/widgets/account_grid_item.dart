@@ -9,7 +9,7 @@ class AccountGridItem extends StatelessWidget {
   build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, '/detail'),
+        onTap: () => Navigator.pushNamed(context, '/detail', arguments: account),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.center, children: [
           Container(width: 100, height: 100, margin: const EdgeInsets.symmetric(vertical: 10), color: Colors.grey),
           Text(account.name, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.bold)),

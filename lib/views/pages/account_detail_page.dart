@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:rr_qasim_assign/models/account.dart';
 
 class AccountDetailPage extends StatelessWidget {
   const AccountDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final account = ModalRoute.of(context)!.settings.arguments as Account;
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text(account.name)),
       body: ConstrainedBox(
         constraints: const BoxConstraints.tightFor(width: double.infinity),
         child: SingleChildScrollView(
@@ -17,12 +20,15 @@ class AccountDetailPage extends StatelessWidget {
               runAlignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Container(width: 300, height: 200, color: Colors.grey),
-                const Text('Fourth Coffee (sample)', style: TextStyle(fontWeight: FontWeight.bold)),
-                const Text('5009 Orange Street Renton, TX 20175 U.S.'),
-                const Text('http://www.fourthcoffee.com/', style: TextStyle(color: Colors.blue)),
-                const Text('someone1@example.com', style: TextStyle(color: Colors.blue)),
-                const Text('555-0150')
+                Container(width: 300, height: 200, margin: const EdgeInsets.only(top: 20), color: Colors.grey),
+                Text(account.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  account.address,
+                  textAlign: TextAlign.center,
+                ),
+                Text(account.website, style: const TextStyle(color: Colors.blue)),
+                Text(account.email, style: const TextStyle(color: Colors.blue)),
+                Text(account.phone)
               ]),
         ),
       ),
