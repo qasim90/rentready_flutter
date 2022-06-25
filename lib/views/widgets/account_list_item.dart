@@ -16,17 +16,17 @@ class AccountListItem extends StatelessWidget {
           children: [
             Container(width: 130, height: 100, color: Colors.grey.shade400),
             const SizedBox(width: 10),
-            Wrap(
-              spacing: 5,
-              direction: Axis.vertical,
-              crossAxisAlignment: WrapCrossAlignment.start,
-              children: [
-                Text(account.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-                Text(account.address),
-                Text(account.website, style: const TextStyle(color: Colors.blue)),
-                Text(account.email, style: const TextStyle(color: Colors.blue)),
-                Text(account.phone)
-              ],
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(account.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(account.address),
+                  Text(account.website, style: const TextStyle(color: Colors.blue)),
+                  Text(account.email, style: const TextStyle(color: Colors.blue)),
+                  Text(account.phone)
+                ],
+              ),
             )
           ],
         ),

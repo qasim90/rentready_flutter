@@ -47,10 +47,11 @@ class AccountsPage extends StatelessWidget {
                           return AccountListItem(controller.accounts[index]);
                         })
                     : GridView.count(
-                        crossAxisCount: 3,
+                        crossAxisCount: 2,
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 10,
-                        childAspectRatio: 0.9,
+                        childAspectRatio: 0.7,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         children: controller.accounts.map((acct) => AccountGridItem(acct)).toList())))
       ]),
     );

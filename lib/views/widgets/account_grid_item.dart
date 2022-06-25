@@ -10,20 +10,18 @@ class AccountGridItem extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, '/detail'),
-        child: Wrap(
-            spacing: 5,
-            direction: Axis.vertical,
-            // alignment: WrapAlignment.center,
-            runAlignment: WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Container(width: 100, height: 100, color: Colors.grey),
-              Text(account.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text(account.address),
-              Text(account.website, style: const TextStyle(color: Colors.blue)),
-              Text(account.email, style: const TextStyle(color: Colors.blue)),
-              Text(account.phone)
-            ]),
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Container(width: 100, height: 100, margin: const EdgeInsets.symmetric(vertical: 10), color: Colors.grey),
+          Text(account.name, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 5),
+          Text(account.address, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+          const SizedBox(height: 5),
+          // Text(account.website, textAlign: TextAlign.center, style: const TextStyle(color: Colors.blue)),
+          // const SizedBox(height: 5),
+          // Text(account.email, textAlign: TextAlign.center, style: const TextStyle(color: Colors.blue)),
+          // const SizedBox(height: 5),
+          Text(account.phone)
+        ]),
       ),
     );
   }
