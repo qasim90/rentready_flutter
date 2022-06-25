@@ -8,7 +8,8 @@ class ApiProvider {
         'accounts?\$top=50&\$select=name,accountnumber,accountid,statecode,address1_stateorprovince,address1_composite,websiteurl,telephone1,emailaddress1';
     try {
       var json = await Api().get_(url);
-      return json['values'].map((obj) => Account.fromJson(obj));
+      List items = json['value'];
+      return items.map((obj) => Account.fromJson(obj)).toList();
     } catch (e) {
       print('provider: $e');
       rethrow;

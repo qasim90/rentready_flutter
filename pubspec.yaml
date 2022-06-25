@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   http: ^0.13.4
+  oauth2_client:
+    git:
+      url: https://github.com/qasim90/oauth2_client
 
 dev_dependencies:
   flutter_test:
