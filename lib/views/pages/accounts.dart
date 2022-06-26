@@ -4,6 +4,7 @@ import 'package:rr_qasim_assign/controllers/accounts_controller.dart';
 import 'package:rr_qasim_assign/localizations/Translator.dart';
 import 'package:rr_qasim_assign/views/widgets/account_grid_item.dart';
 import 'package:rr_qasim_assign/views/widgets/account_list_item.dart';
+import 'package:rr_qasim_assign/views/widgets/filters_popup.dart';
 import 'package:rr_qasim_assign/views/widgets/layout_switcher.dart';
 import 'package:rr_qasim_assign/views/widgets/preloader.dart';
 
@@ -25,7 +26,7 @@ class AccountsPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextField(
-                      onSubmitted: controller.fetchAccounts,
+                      onSubmitted: controller.onSearch,
                       textCapitalization: TextCapitalization.words,
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
@@ -35,7 +36,7 @@ class AccountsPage extends StatelessWidget {
                           hintText: Translator().getText('search'))),
                 ),
                 TextButton.icon(
-                    onPressed: () => {},
+                    onPressed: () => FiltersPopup.present(context),
                     icon: const Icon(Icons.filter_alt),
                     label: Text(Translator().getText('filter')))
               ],
