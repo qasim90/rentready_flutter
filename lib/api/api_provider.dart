@@ -1,7 +1,7 @@
-import 'package:rr_qasim_assign/api/api_client.dart';
-import 'package:rr_qasim_assign/constants.dart';
-import 'package:rr_qasim_assign/models/account.dart';
-import 'package:rr_qasim_assign/models/filter_option.dart';
+import 'package:rentready_flutter/api/api_client.dart';
+import 'package:rentready_flutter/constants.dart';
+import 'package:rentready_flutter/models/account.dart';
+import 'package:rentready_flutter/models/filter_option.dart';
 
 class ApiProvider {
   Future<List<Account>> getAccounts(String searchQuery, String filters) async {

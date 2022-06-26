@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:rr_qasim_assign/api/api_provider.dart';
-import 'package:rr_qasim_assign/localizations/Translator.dart';
-import 'package:rr_qasim_assign/models/filter_option.dart';
-import 'package:rr_qasim_assign/views/widgets/filters_popup.dart';
+import 'package:rentready_flutter/api/api_provider.dart';
+import 'package:rentready_flutter/localizations/Translator.dart';
+import 'package:rentready_flutter/models/filter_option.dart';
+import 'package:rentready_flutter/views/widgets/filters_popup.dart';
 
 class AccountsController extends GetxController {
   // Oberveable list to hold state for list/grid toggle buttons

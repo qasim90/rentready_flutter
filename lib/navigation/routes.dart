@@ -1,5 +1,5 @@
-import 'package:rr_qasim_assign/views/pages/account_detail_page.dart';
-import 'package:rr_qasim_assign/views/pages/accounts.dart';
+import 'package:rentready_flutter/views/pages/account_detail_page.dart';
+import 'package:rentready_flutter/views/pages/accounts.dart';
 
 final routes = {
   '/': (context) => AccountsPage(),

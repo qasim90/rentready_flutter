@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:oauth2_client/oauth2_helper.dart';
-import 'package:rr_qasim_assign/api/oauth_client.dart';
-import 'package:rr_qasim_assign/constants.dart';
+import 'package:rentready_flutter/api/oauth_client.dart';
+import 'package:rentready_flutter/constants.dart';
 
 class Api {
   static Api instance = Api._internal();

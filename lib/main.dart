@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:rr_qasim_assign/localizations/Messages.dart';
-import 'package:rr_qasim_assign/navigation/routes.dart';
+import 'package:rentready_flutter/localizations/Messages.dart';
+import 'package:rentready_flutter/navigation/routes.dart';
 
 void main() {
   runApp(const MyApp());

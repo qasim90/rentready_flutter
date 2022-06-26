@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:rr_qasim_assign/localizations/en.dart';
+import 'package:rentready_flutter/localizations/en.dart';
 
 class Messages extends Translations {
   @override

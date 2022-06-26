@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rr_qasim_assign/controllers/accounts_controller.dart';
-import 'package:rr_qasim_assign/localizations/Translator.dart';
-import 'package:rr_qasim_assign/views/widgets/account_grid_item.dart';
-import 'package:rr_qasim_assign/views/widgets/account_list_item.dart';
-import 'package:rr_qasim_assign/views/widgets/filters_popup.dart';
-import 'package:rr_qasim_assign/views/widgets/layout_switcher.dart';
-import 'package:rr_qasim_assign/views/widgets/preloader.dart';
+import 'package:rentready_flutter/controllers/accounts_controller.dart';
+import 'package:rentready_flutter/localizations/Translator.dart';
+import 'package:rentready_flutter/views/widgets/account_grid_item.dart';
+import 'package:rentready_flutter/views/widgets/account_list_item.dart';
+import 'package:rentready_flutter/views/widgets/filters_popup.dart';
+import 'package:rentready_flutter/views/widgets/layout_switcher.dart';
+import 'package:rentready_flutter/views/widgets/preloader.dart';
 
 class AccountsPage extends StatelessWidget {
   AccountsPage({Key? key}) : super(key: key);

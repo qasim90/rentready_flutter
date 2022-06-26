@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import 'package:rr_qasim_assign/controllers/accounts_controller.dart';
+import 'package:rentready_flutter/controllers/accounts_controller.dart';
 
 class LayoutSwitcher extends StatelessWidget {
   LayoutSwitcher({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rr_qasim_assign/models/account.dart';
+import 'package:rentready_flutter/models/account.dart';
 
 class AccountDetailPage extends StatelessWidget {
   const AccountDetailPage({Key? key}) : super(key: key);

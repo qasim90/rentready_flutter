@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rr_qasim_assign/controllers/accounts_controller.dart';
-import 'package:rr_qasim_assign/localizations/Translator.dart';
-import 'package:rr_qasim_assign/models/filter_option.dart';
+import 'package:rentready_flutter/controllers/accounts_controller.dart';
+import 'package:rentready_flutter/localizations/Translator.dart';
+import 'package:rentready_flutter/models/filter_option.dart';
 
 class FiltersPopup extends StatelessWidget {
   FiltersPopup({Key? key}) : super(key: key);
