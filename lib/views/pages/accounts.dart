@@ -5,6 +5,7 @@ import 'package:rr_qasim_assign/localizations/Translator.dart';
 import 'package:rr_qasim_assign/views/widgets/account_grid_item.dart';
 import 'package:rr_qasim_assign/views/widgets/account_list_item.dart';
 import 'package:rr_qasim_assign/views/widgets/layout_switcher.dart';
+import 'package:rr_qasim_assign/views/widgets/preloader.dart';
 
 class AccountsPage extends StatelessWidget {
   AccountsPage({Key? key}) : super(key: key);
@@ -16,29 +17,31 @@ class AccountsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(Translator().getText('accounts')), actions: [LayoutSwitcher()]),
-      body: Column(children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: TextField(
-                  onSubmitted: controller.fetchAccounts,
-                  textCapitalization: TextCapitalization.words,
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                      // border: InputBorder.none,
-                      hintText: Translator().getText('search'))),
+      body: Stack(
+        children: [
+          Column(children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextField(
+                      onSubmitted: controller.fetchAccounts,
+                      textCapitalization: TextCapitalization.words,
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.search),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                          // border: InputBorder.none,
+                          hintText: Translator().getText('search'))),
+                ),
+                TextButton.icon(
+                    onPressed: () => {},
+                    icon: const Icon(Icons.filter_alt),
+                    label: Text(Translator().getText('filter')))
+              ],
             ),
-            TextButton.icon(
-                onPressed: () => {}, icon: const Icon(Icons.filter_alt), label: Text(Translator().getText('filter')))
-          ],
-        ),
-        Expanded(
-            child: Obx(() => controller.isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : controller.isListView
+            Expanded(
+                child: Obx(() => controller.isListView
                     ? ListView.separated(
                         itemCount: controller.accounts.length,
                         padding: const EdgeInsets.only(top: 10),
@@ -53,7 +56,10 @@ class AccountsPage extends StatelessWidget {
                         childAspectRatio: 0.7,
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         children: controller.accounts.map((acct) => AccountGridItem(acct)).toList())))
-      ]),
+          ]),
+          Obx(() => controller.isLoading ? const Preloader() : const SizedBox.shrink())
+        ],
+      ),
     );
   }
 }
