@@ -5,6 +5,10 @@ import 'package:rentready_flutter/models/filter_option.dart';
 import 'package:rentready_flutter/views/widgets/filters_popup.dart';
 
 class AccountsController extends GetxController {
+  AccountsController(this.apiProvider);
+
+  ApiProvider apiProvider;
+
   // Oberveable list to hold state for list/grid toggle buttons
   final _listGridStatus = [true, false].obs;
   final accounts = [].obs;
@@ -45,17 +49,17 @@ class AccountsController extends GetxController {
   fetchAccounts({String query = '', String filters = ''}) async {
     _isLoading.value = true;
     try {
-      final _accounts = await ApiProvider().getAccounts(query, filters);
+      final _accounts = await apiProvider.getAccounts(query, filters);
       accounts.assignAll(_accounts);
       _isLoading.value = false;
     } on Exception catch (e) {
-      printError(info: e.toString());
+      print(e.toString());
     }
   }
 
   fetchStatesOrProvinces() async {
     try {
-      final _stateOpts = await ApiProvider().fetchAllStates();
+      final _stateOpts = await apiProvider.fetchAllStates();
       if (_stateOpts.isNotEmpty) {
         // Append heading item for state or province section
         filterOptions.add(HeadingItem(Translator().getText('byStateProvince')));
@@ -97,7 +101,7 @@ class AccountsController extends GetxController {
     if (stateProvinceValues.isNotEmpty) {
       // append 'and' operation if statecode part is also present
       if (filterStr.isNotEmpty) filterStr += ' and ';
-      filterStr =
+      filterStr +=
           'Microsoft.Dynamics.CRM.In(PropertyName=\'address1_stateorprovince\', PropertyValues=[${getQuotedStrings(stateProvinceValues)}])';
     }
 
