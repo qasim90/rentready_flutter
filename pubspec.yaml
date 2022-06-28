@@ -40,6 +40,7 @@ dependencies:
   oauth2_client:
     git:
       url: https://github.com/qasim90/oauth2_client
+  mocktail: ^0.3.0
 
 dev_dependencies:
   flutter_test:
