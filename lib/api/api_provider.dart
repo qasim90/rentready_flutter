@@ -4,6 +4,9 @@ import 'package:rentready_flutter/models/account.dart';
 import 'package:rentready_flutter/models/filter_option.dart';
 
 class ApiProvider {
+  Api apiClient;
+  ApiProvider(this.apiClient);
+
   Future<List<Account>> getAccounts(String searchQuery, String filters) async {
     var url = apiBaseUrl +
         'accounts?\$top=50&\$select=name,accountnumber,accountid,statecode,address1_stateorprovince,address1_composite,websiteurl,telephone1,emailaddress1';
@@ -21,7 +24,7 @@ class ApiProvider {
     }
 
     try {
-      var json = await Api().get_(url);
+      var json = await apiClient.get_(url);
       List items = json['value'];
       return items.map((obj) => Account.fromJson(obj)).toList();
     } catch (e) {
@@ -34,7 +37,7 @@ class ApiProvider {
     var url = apiBaseUrl + 'accounts?\$select=address1_stateorprovince&\$filter=address1_stateorprovince ne null';
 
     try {
-      var json = await Api().get_(url);
+      var json = await apiClient.get_(url);
       List items = json['value'];
       return items.map((obj) => obj['address1_stateorprovince']).toSet().map(((e) => FilterOption(e))).toList();
     } catch (e) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rentready_flutter/api/api_client.dart';
 import 'package:rentready_flutter/api/api_provider.dart';
 import 'package:rentready_flutter/controllers/accounts_controller.dart';
 import 'package:rentready_flutter/localizations/Translator.dart';
@@ -13,7 +14,7 @@ class AccountsPage extends StatelessWidget {
   AccountsPage({Key? key}) : super(key: key);
 
   // GetX controller to hold the state and logic for this view
-  final controller = Get.put(AccountsController(ApiProvider()));
+  final controller = Get.put(AccountsController(ApiProvider(Api())));
 
   @override
   Widget build(BuildContext context) {
