@@ -11,6 +11,7 @@ class AccountListItem extends StatelessWidget {
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: InkWell(
+        key: Key(account.acctountId),
         onTap: () => Navigator.pushNamed(context, '/detail', arguments: account),
         child: Row(
           children: [

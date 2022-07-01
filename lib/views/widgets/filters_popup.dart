@@ -28,6 +28,7 @@ class FiltersPopup extends StatelessWidget {
           title: Text(Translator().getText('filter')),
           actions: [
             TextButton(
+                key: const Key('applyBtn'),
                 style: TextButton.styleFrom(primary: Colors.white),
                 onPressed: () {
                   controller.applyFilters();

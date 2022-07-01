@@ -4,6 +4,9 @@ import 'package:get/instance_manager.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rentready_flutter/api/api_client.dart';
 import 'package:rentready_flutter/main.dart';
+import 'package:rentready_flutter/views/pages/account_detail_page.dart';
+import 'package:rentready_flutter/views/widgets/account_list_item.dart';
+import 'package:rentready_flutter/views/widgets/filters_popup.dart';
 
 import 'package:rentready_flutter/views/widgets/layout_switcher.dart';
 import 'package:rentready_flutter/views/widgets/preloader.dart';
@@ -24,6 +27,10 @@ void main() {
     // fetchAllStates url selects only address1_stateorprovince in query string.
     when(() => apiClient.get_(any(that: contains('\$select=address1_stateorprovince&'))))
         .thenAnswer((_) => Future.value(mockStatesResponse));
+
+    // Return empty array when filtering by stateOrProvince "WA"
+    when(() => apiClient.get_(any(that: contains('\'address1_stateorprovince\', PropertyValues=["WA"]'))))
+        .thenAnswer((_) => Future.value({'value': []}));
   });
 
   testWidgets('Initial accounts page UI', (WidgetTester tester) async {
@@ -62,5 +69,53 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.byType(ListView), findsOneWidget);
     expect(find.byType(GridView), findsNothing);
+  });
+
+  testWidgets("Test search accounts and tap to open detail page", (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
+
+    /// Find search textfield and enter query
+    await tester.enterText(find.byType(TextField), 'Coffee');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pump();
+
+    // Expect one or more AccountListItem rendered
+    expect(find.byType(AccountListItem), findsWidgets);
+
+    // Find the target InkWell widget by passing accountid as key
+    await tester.tap(find.byKey(Key(mockAccounts.first.acctountId)));
+    await tester.pumpAndSettle();
+
+    // Expect the detail page opened
+    expect(find.byType(AccountDetailPage), findsOneWidget);
+  });
+
+  testWidgets("Open filters popup, select filter and apply", (tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
+    await tester.pumpAndSettle();
+
+    // Expect accounts list items displayed
+    expect(find.byType(AccountListItem), findsWidgets);
+
+    expect(find.byIcon(Icons.filter_alt), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.filter_alt));
+    await tester.pumpAndSettle();
+
+    // Expect filters popup opened
+    expect(find.byType(FiltersPopup), findsOneWidget);
+
+    await tester.tap(find.text('WA'));
+    await tester.tap(find.byKey(const Key('applyBtn')));
+    await tester.pumpAndSettle();
+
+    // Expect filters popup gone
+    expect(find.byType(FiltersPopup), findsNothing);
+
+    // We've only one mocked account in "TX" state so filtering by "WA"
+    // should result in no list items displayed
+    expect(find.byType(AccountListItem), findsNothing);
   });
 }
