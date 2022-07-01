@@ -18,13 +18,13 @@ This assignment covers following requirements or goals:
 The application has been tested in iPhone envoirnment with Web and Android coming soon. Also since this is just a test and not a production app so I've taken the liberty of some shortcuts e.g. aggregating multiple tests, mocking in a non-fancy way etc. to save time.
 
 ### Accounts list view
-![](https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/accounts_list.png|width=300px)
+<img src="https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/accounts_list.png" width="600" height="1298"  />
 
 ### Accounts grid view
-![](https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/accounts_grid.png|width=300px)
+<img src="https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/accounts_grid.png" width="600" height="1298"  />
 
 ### Filters popup
-![](https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/filters.png|width=300px)
+<img src="https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/filters.png" width="600" height="1298"  />
 
 ### Detail page
-![](https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/account_detail.png|width=300px)
+<img src="https://raw.githubusercontent.com/qasim90/rentready_flutter/master/screenshots/account_detail.png" width="600" height="1298"  />
