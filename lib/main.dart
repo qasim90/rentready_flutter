@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
+import 'package:rentready_flutter/api/api_client.dart';
 import 'package:rentready_flutter/localizations/Messages.dart';
 import 'package:rentready_flutter/navigation/routes.dart';
 
 void main() {
+  // Lazy inject api dependency so the instance is created on first use
+  Get.lazyPut(() => Api());
+
   runApp(const MyApp());
 }
 

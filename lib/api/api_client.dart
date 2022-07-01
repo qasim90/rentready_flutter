@@ -6,12 +6,12 @@ import 'package:rentready_flutter/api/oauth_client.dart';
 import 'package:rentready_flutter/constants.dart';
 
 class Api {
-  static Api instance = Api._internal();
+  /*static Api instance = Api._internal();
   Api._internal();
 
   factory Api() {
     return instance;
-  }
+  }*/
 
   //Instantiate an OAuth2Client...
   OAuthClient client = OAuthClient(

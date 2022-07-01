@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/instance_manager.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:rentready_flutter/api/api_client.dart';
 import 'package:rentready_flutter/api/api_provider.dart';
@@ -13,9 +14,13 @@ void main() {
   late ApiProvider apiProvider;
   late MockApiClient apiClient;
 
+  setUpAll(() {
+    Get.put<Api>(MockApiClient());
+  });
+
   setUp(() {
-    apiClient = MockApiClient();
-    apiProvider = ApiProvider(apiClient);
+    apiClient = Get.find<Api>() as MockApiClient;
+    apiProvider = ApiProvider();
   });
 
   test("Create accoounts from json", () async {

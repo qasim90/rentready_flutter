@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/instance_manager.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:rentready_flutter/api/api_client.dart';
 import 'package:rentready_flutter/main.dart';
 
 import 'package:rentready_flutter/views/widgets/layout_switcher.dart';
 import 'package:rentready_flutter/views/widgets/preloader.dart';
 
+import 'api_provider_test.dart';
+import 'sample_data.dart';
+
 void main() {
+  MockApiClient apiClient = Get.put<Api>(MockApiClient()) as MockApiClient;
+
+  setUpAll(() {
+    // Intercept getAccounts api call and return mocked accounts.
+    // getAccounts url should contain name accountnumber params in query string.
+    when(() => apiClient.get_(any(that: contains('\$select=name,accountnumber'))))
+        .thenAnswer((_) => Future.value(mockAccountsResponse));
+
+    // Intercept fetchAllStates api call and return mocked states response.
+    // fetchAllStates url selects only address1_stateorprovince in query string.
+    when(() => apiClient.get_(any(that: contains('\$select=address1_stateorprovince&'))))
+        .thenAnswer((_) => Future.value(mockStatesResponse));
+  });
+
   testWidgets('Initial accounts page UI', (WidgetTester tester) async {
+    when(() => apiClient.get_(any())).thenAnswer((_) => Future.value(mockAccountsResponse));
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
@@ -19,6 +41,11 @@ void main() {
     expect(find.byType(TextField), findsOneWidget);
     expect(find.byIcon(Icons.filter_alt), findsOneWidget);
     expect(find.byType(ListView), findsOneWidget);
+  });
+
+  testWidgets("Test list/grid view toggling", (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
 
     // Test switching to grid view
     await tester.tap(find.byIcon(Icons.grid_view));

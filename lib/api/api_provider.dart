@@ -1,11 +1,16 @@
+import 'package:get/instance_manager.dart';
 import 'package:rentready_flutter/api/api_client.dart';
 import 'package:rentready_flutter/constants.dart';
 import 'package:rentready_flutter/models/account.dart';
 import 'package:rentready_flutter/models/filter_option.dart';
 
 class ApiProvider {
-  Api apiClient;
-  ApiProvider(this.apiClient);
+  // Get Api instance injected in main.dart or mocked api client from tests
+  Api apiClient = Get.find<Api>();
+
+  ApiProvider() {
+    print(apiClient.runtimeType);
+  }
 
   Future<List<Account>> getAccounts(String searchQuery, String filters) async {
     var url = apiBaseUrl +
