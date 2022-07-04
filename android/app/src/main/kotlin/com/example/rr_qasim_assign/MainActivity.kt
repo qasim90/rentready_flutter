@@ -1,4 +1,4 @@
-package com.example.rr_qasim_assign
+package com.rentready.assignment
 
 import io.flutter.embedding.android.FlutterActivity
 
