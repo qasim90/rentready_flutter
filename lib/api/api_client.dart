@@ -15,8 +15,8 @@ class Api {
 
   //Instantiate an OAuth2Client...
   OAuthClient client = OAuthClient(
-    customUriScheme: 'http', //Must correspond to the AndroidManifest's "android:scheme" attribute
-    redirectUri: 'msauth.rr://auth', //Can be any URI, but the scheme part must correspond to the customeUriScheme
+    customUriScheme: 'msauth', //Must correspond to the AndroidManifest's "android:scheme" attribute
+    redirectUri: authRedirectUri, //Can be any URI, but the scheme part must correspond to the customeUriScheme
   );
 
   get_(url) async {
