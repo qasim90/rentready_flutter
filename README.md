@@ -14,6 +14,9 @@ This assignment covers following requirements or goals:
 10. UI component tests (Widgets test in flutter)
 11. Solution in a public repository
 12. Meaningful readme.md in the repository root
+13. Setup build scripts in docker container (in docker branch)
+
+NOTE: Docker implementation is in "docker" branch and not on master.
 
 The application has been tested in iPhone envoirnment with Web and Android coming soon. Also since this is just a test and not a production app so I've taken the liberty of some shortcuts e.g. aggregating multiple tests, mocking in a non-fancy way etc. to save time.
 
