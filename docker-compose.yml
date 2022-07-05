@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  rentready_flutter:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: rentready_flutter
+    volumes:
+      - ./:/home/project
